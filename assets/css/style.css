@@ -32,15 +32,23 @@ header { position: sticky; top: 0; z-index: 50; background: rgba(11,18,32,.8); b
 nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-weight: 600; }
 nav a.active, nav a:hover { color: var(--text); }
 
-.logo { display:none; } /* hide the old placeholder box */
+/* Lock logo size & prevent flex growth/shrink */
 .logo-img {
-  width: 32px; height: 32px;
-  border-radius: 8px;        /* keep that soft-corner look */
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  flex: 0 0 32px;   /* don’t grow/shrink in flex row */
 }
-@media (min-width: 640px) {
-  .logo-img { width: 36px; height: 36px; }
+
+/* Don’t scale on click/focus */
+a.brand:active .logo-img,
+a.brand:focus .logo-img {
+  transform: none;
 }
+
 
 
 
