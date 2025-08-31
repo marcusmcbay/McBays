@@ -29,6 +29,17 @@ header { position: sticky; top: 0; z-index: 50; background: rgba(11,18,32,.8); b
 nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-weight: 600; }
 nav a.active, nav a:hover { color: var(--text); }
 
+.logo { display:none; } /* hide the old placeholder box */
+.logo-img {
+  width: 32px; height: 32px;
+  border-radius: 8px;        /* keep that soft-corner look */
+  display: inline-block;
+}
+@media (min-width: 640px) {
+  .logo-img { width: 36px; height: 36px; }
+}
+
+
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; padding: 56px 0; }
