@@ -1,6 +1,6 @@
 /* McBays – minimal, clean, responsive */
 :root {
-  --bg: #0b1220;       /* deep navy */
+  --bg: #afcaff;       /* deep navy */
   --card: #111a2b;
   --text: #e6eefc;
   --muted: #9fb2d4;
@@ -40,10 +40,9 @@ nav a.active, nav a:hover { color: var(--text); }
   display: inline-block;
   vertical-align: middle;
   object-fit: contain;
-  flex: 0 0 32px;   /* don’t grow/shrink in flex row */
+  flex: 0 0 32px;  
 }
 
-/* Don’t scale on click/focus */
 a.brand:active .logo-img,
 a.brand:focus .logo-img {
   transform: none;
