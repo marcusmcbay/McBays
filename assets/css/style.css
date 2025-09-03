@@ -2,18 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root{
-  --bg1: #0a1326;        /* very dark navy */
-  --bg2: #123b75;        /* brighter tech blue */
-  --bg3: #0b3258;        /* teal-ish blue */
-  --bg4: #081b2f;        /* fallback dark */
+  --bg1: #0a1326;
+  --bg2: #123b75;
+  --bg3: #0b3258;
+  --bg4: #081b2f;
   --card: #ffffff;
-  --text: #0f2a4a;       /* used inside header only */
-  --muted: #d7e4f3;      /* body copy on dark */
+  --text: #0f2a4a;
+  --muted: #d7e4f3;
   --accent: #1e88ff;
   --accent-2: #66b3ff;
   --line: #e6edf5;
-  --dot:#25d366;         /* green dot */
-  --ok:#25d366; --warn:#ffb020; --danger:#ff5d5d;
+  --dot:#25d366;
 }
 
 *{ box-sizing:border-box }
@@ -24,7 +23,6 @@ body{
   line-height: 1.6;
   color: #fff;
 
-  /* Subtle, premium gradient background */
   background: linear-gradient(-30deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4), var(--bg1));
   background-size: 300% 300%;
   animation: bg-drift 20s ease-in-out infinite;
@@ -38,7 +36,7 @@ body{
 
 .container{ max-width:1140px; margin:0 auto; padding:0 24px }
 
-/* Header / Nav: bright, translucent over dark bg */
+/* Header / Nav */
 header{
   position: sticky; top:0; z-index:50;
   background: rgba(255,255,255,.85);
@@ -52,11 +50,9 @@ header{
 nav a{ color:#7a889b; text-decoration:none; margin-left:18px; font-weight:600 }
 nav a.active, nav a:hover{ color:var(--text) }
 
-/* Lock logo size */
 .logo-img{ width:32px; height:32px; border-radius:8px; display:inline-block; vertical-align:middle; object-fit:contain; flex:0 0 32px }
-a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
 
-/* Hero layout */
+/* Hero */
 .hero{
   display:grid; grid-template-columns:1.2fr 1fr; gap:32px; align-items:center;
   padding:72px 0 56px;
@@ -65,7 +61,7 @@ a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
 .hero p{ margin:0 0 22px; color:var(--muted) }
 .hero .cta{ display:flex; gap:12px; flex-wrap:wrap }
 
-/* Buttons (micro-interactions) */
+/* Buttons */
 .button{
   display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700;
   text-decoration:none; transition:transform .12s ease, background .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
@@ -82,7 +78,7 @@ a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
 }
 .button.secondary:hover{ background:rgba(255,255,255,0.06) }
 
-/* Hero panel + stats (on dark) */
+/* Panel + stats */
 .hero .panel{
   background: rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.15);
@@ -91,36 +87,28 @@ a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
 }
 .hero .stat{ display:grid; grid-template-columns:28px 1fr; gap:12px; padding:12px; border-radius:12px; align-items:center; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15) }
 
-/* Hide status dots until interaction */
+/* Dot hidden until interaction */
 .stat .dot{
   width:10px;
   height:10px;
   border-radius:50%;
   background: var(--dot);
-  opacity: 0;               /* invisible but keeps layout space */
+  opacity: 0;
   transform: scale(.85);
   transition: opacity .18s ease, transform .18s ease;
 }
-
-/* Show on hover, focus, tap */
 .stat:hover .dot,
 .stat:focus-within .dot,
 .stat:active .dot{
   opacity: 1;
   transform: scale(1);
 }
-
-/* Optional: subtle highlight on hover */
 .stat:hover,
 .stat:focus-within,
 .stat:active{
   background: rgba(255,255,255,0.10);
   border-color: rgba(255,255,255,0.22);
 }
-
-/* Neutralize old classes if they exist */
-.dot.ok, .dot.warn, .dot.danger { background: var(--dot) !important; }
-
 .stat + .stat{ margin-top:6px }
 
 /* Sections */
@@ -128,7 +116,7 @@ a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
 .section h2{ font-size:32px; margin:0 0 8px }
 .section p.lead{ margin:0 0 24px; color:var(--muted) }
 
-/* Cards (micro-interactions) */
+/* Cards */
 .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px }
 .card{
   background: rgba(255,255,255,0.08);
@@ -171,9 +159,64 @@ footer{
 footer a{ color:#d9e2f1; text-decoration:none }
 footer a:hover{ color:#fff }
 
-/* Reveal on scroll */
+/* Reveal */
 .reveal{ opacity:0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.is-visible{ opacity:1; transform: translateY(0); }
+
+/* --- Hamburger Menu --- */
+.menu-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:40px;height:40px;
+  border:1px solid rgba(15,42,74,.15);
+  border-radius:10px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(8px);
+  cursor:pointer;
+}
+.menu-toggle .bar{
+  display:block;
+  width:18px;height:2px;
+  background:#0f2a4a;
+  margin:2.5px 0;
+  border-radius:1px;
+}
+.nav{ position:relative; }
+
+@media (min-width:641px){
+  #site-nav{ display:flex; }
+  .menu-toggle{ display:none; }
+}
+@media (max-width:640px){
+  .menu-toggle{ display:inline-flex; }
+
+  #site-nav{
+    display:none;
+    position:absolute;
+    top:100%; right:0;
+    margin-top:10px;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(8px);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:10px;
+    flex-direction:column;
+    min-width: 200px;
+    box-shadow:0 12px 22px rgba(0,0,0,.12);
+  }
+  body.menu-open #site-nav{ display:flex; }
+  #site-nav a{
+    color: var(--text);
+    margin:0;
+    padding:10px 12px;
+    border-radius:8px;
+  }
+  #site-nav a:hover{ 
+    background: rgba(15,42,74,0.06);
+    color: var(--text);
+  }
+}
 
 /* Responsive */
 @media (max-width:980px){
@@ -181,12 +224,11 @@ footer a:hover{ color:#fff }
   .cards{ grid-template-columns:1fr 1fr }
 }
 @media (max-width:640px){
-  nav{ display:none }
   .cards{ grid-template-columns:1fr }
   .hero h1{ font-size:36px }
 }
 
-/* Reduced motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   body { background-position: 0 0 !important; }

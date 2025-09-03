@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>McBays – IT & Networking</title>
-<meta name="description" content="IT & networking installs, structured cabling, and cleanups across California." />
-<link rel="stylesheet" href="assets/css/style.css?v=4" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McBays – IT & Networking</title>
+  <meta name="description" content="IT & networking installs, structured cabling, and cleanups across California." />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header>
@@ -14,7 +14,14 @@
         <img class="logo-img" src="assets/img/mcbays-logo.png" alt="McBays logo" />
         <span class="brand-name">McBays</span>
       </a>
-      <nav>
+
+      <!-- Hamburger toggle -->
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <!-- Site nav -->
+      <nav id="site-nav">
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -25,35 +32,35 @@
   <main class="container">
     <section class="hero reveal">
       <div>
-        <h1>Personal IT Support, Clean Networks, Clear Results</h1>
-        <p>We design, install, and clean up commercial networks: structured cabling, Wi-Fi, switching, and secure IT foundations—built the right way.</p>
+        <h1>Your IT Partner for Computers & Clean Networks</h1>
+        <p>From laptop troubleshooting to office Wi-Fi and cable cleanups — McBays delivers personal IT help with a professional touch.</p>
         <div class="cta">
           <a class="button primary" href="/services.html">See Services</a>
           <a class="button secondary" href="/contact.html">Get a Quote</a>
         </div>
       </div>
       <div class="panel">
-        <div class="stat"><span class="dot ok"></span><div><strong>Closet cleanups</strong><br><small>From spaghetti to showroom-clean racks.</small></div></div>
-        <div class="stat"><span class="dot warn"></span><div><strong>Warehouse Wi-Fi</strong><br><small>Site surveys, AP placement, PoE switching.</small></div></div>
-        <div class="stat"><span class="dot danger"></span><div><strong>Compliance & docs</strong><br><small>Labels, maps, and test reports that pass audits.</small></div></div>
+        <div class="stat"><span class="dot"></span><div><strong>Computer Support</strong><br><small>Quick diagnostics, virus removal, and software help when you need it.</small></div></div>
+        <div class="stat"><span class="dot"></span><div><strong>Network Setup & Cleanup</strong><br><small>From messy routers and cables to clean, reliable Wi-Fi and switches.</small></div></div>
+        <div class="stat"><span class="dot"></span><div><strong>Documentation & Peace of Mind</strong><br><small>Clear labels, simple instructions, and setups that anyone can understand.</small></div></div>
       </div>
     </section>
 
     <section class="section reveal">
       <h2>What We Do</h2>
-      <p class="lead">From new builds to retrofits, McBays delivers reliable, well-documented networks that scale.</p>
+      <p class="lead">From IT support today to network builds tomorrow, McBays delivers reliable, well-documented solutions that scale.</p>
       <div class="cards">
         <article class="card">
-          <h3>Structured Cabling</h3>
-          <p>Cat6/Cat6a copper, fiber backbones, patch panels, labeling, and certification.</p>
+          <h3>Computer & Software Support</h3>
+          <p>Diagnostics, repairs, and software optimization for individuals and small businesses.</p>
         </article>
         <article class="card">
-          <h3>Network Install & Cleanup</h3>
-          <p>Racks, cable management, switch installs, UPS, and beautiful cable dressing.</p>
+          <h3>Small Office Networking</h3>
+          <p>Wi-Fi setup, printers, and security basics for growing teams.</p>
         </article>
         <article class="card">
-          <h3>Managed IT Foundations</h3>
-          <p>Secure configurations for switching, routing, Wi-Fi, and endpoint onboarding.</p>
+          <h3>Rack & Cabling (Coming Soon)</h3>
+          <p>Structured cabling, patch panels, and enterprise-ready installs as McBays expands.</p>
         </article>
       </div>
     </section>
@@ -65,14 +72,44 @@
     </div>
   </footer>
 
-  <!-- Minimal JS: year + fade-in on scroll -->
+  <!-- Minimal JS -->
   <script>
+    // Update year
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Fade-in on scroll
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('site-nav');
+
+    function closeMenu(){
+      document.body.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded','false');
+    }
+
+    toggle.addEventListener('click', () => {
+      const open = document.body.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!document.body.classList.contains('menu-open')) return;
+      if (e.target.closest('.menu-toggle') || e.target.closest('#site-nav')) return;
+      closeMenu();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 640) closeMenu();
+    });
   </script>
 </body>
 </html>
