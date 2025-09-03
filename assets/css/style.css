@@ -114,65 +114,6 @@ footer a:hover{color:var(--text)}
   .hero h1{font-size:36px}
 }
 
-/* === Animated gradient variant for the hero (opt-in) === */
-.hero.is-animated{
-  position: relative;
-  /* keep your grid/spacing from .hero; we only add bg + color */
-  color: #ffffff;                    /* make hero text white on dark bg */
-  background: linear-gradient(120deg,#0a1b3f,#102a6b,#163d9b,#0a1b3f);
-  background-size: 300% 300%;
-  animation: hero-shift 18s ease-in-out infinite;
-  overflow: hidden;                  /* contain the overlay */
-}
-
-/* Make all typical hero text readable on the dark gradient */
-.hero.is-animated h1,
-.hero.is-animated p,
-.hero.is-animated small,
-.hero.is-animated strong { color: #ffffff; }
-
-/* So body-copy “muted” color doesn’t turn gray on dark bg */
-.hero.is-animated p { opacity: 0.9; }
-
-/* Buttons: keep primary bright; make secondary outline-on-dark */
-.hero.is-animated .button.primary{ color:#fff; box-shadow:0 6px 14px rgba(30,136,255,.28); }
-.hero.is-animated .button.secondary{
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.55);
-}
-.hero.is-animated .button.secondary:hover{
-  background: rgba(255,255,255,0.06);
-}
-
-/* Optional: very subtle light bloom to add depth */
-.hero.is-animated::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(1200px 600px at 15% 15%, rgba(255,255,255,0.06), transparent 60%),
-    radial-gradient(900px 450px at 85% 80%, rgba(255,255,255,0.05), transparent 60%);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Keep real content above the overlay */
-.hero.is-animated > *{ position: relative; z-index: 1; }
-
-@keyframes hero-shift{
-  0%{   background-position: 0% 50%; }
-  50%{  background-position: 100% 50%; }
-  100%{ background-position: 0% 50%; }
-}
-
-/* Full-page animated background */
-body.is-animated {
-  background: linear-gradient(120deg, #0a1b3f, #102a6b, #163d9b, #0a1b3f);
-  background-size: 300% 300%;
-  animation: page-shift 18s ease-in-out infinite;
-  color: #fff; /* make default text white */
-}
-
 /* Ensure sections inherit white text by default */
 body.is-animated h1,
 body.is-animated h2,
