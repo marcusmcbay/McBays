@@ -12,6 +12,7 @@
   --accent: #1e88ff;
   --accent-2: #66b3ff;
   --line: #e6edf5;
+  --dot:#25d366;         /* green dot */
   --ok:#25d366; --warn:#ffb020; --danger:#ff5d5d;
 }
 
@@ -89,9 +90,38 @@ a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
   box-shadow: 0 4px 14px rgba(0,0,0,.3);
 }
 .hero .stat{ display:grid; grid-template-columns:28px 1fr; gap:12px; padding:12px; border-radius:12px; align-items:center; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15) }
-.stat .dot{ width:10px; height:10px; border-radius:50% }
+
+/* Hide status dots until interaction */
+.stat .dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background: var(--dot);
+  opacity: 0;               /* invisible but keeps layout space */
+  transform: scale(.85);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* Show on hover, focus, tap */
+.stat:hover .dot,
+.stat:focus-within .dot,
+.stat:active .dot{
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Optional: subtle highlight on hover */
+.stat:hover,
+.stat:focus-within,
+.stat:active{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+}
+
+/* Neutralize old classes if they exist */
+.dot.ok, .dot.warn, .dot.danger { background: var(--dot) !important; }
+
 .stat + .stat{ margin-top:6px }
-.dot.ok{ background:var(--ok) } .dot.warn{ background:var(--warn) } .dot.danger{ background:var(--danger) }
 
 /* Sections */
 .section{ padding:60px 0 }
@@ -160,29 +190,4 @@ footer a:hover{ color:#fff }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   body { background-position: 0 0 !important; }
-}
-
-/* Hide status dots until interaction */
-.stat .dot{
-  opacity: 0;                 /* invisible but keeps layout space */
-  transform: scale(.85);      /* tiny shrink for a smoother pop */
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-/* Show on hover (mouse) and focus-within (keyboard/touch) */
-.stat:hover .dot,
-.stat:focus-within .dot{
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Optional: a tiny highlight on hover */
-.stat:hover{
-  background: rgba(255,255,255,0.10);
-  border-color: rgba(255,255,255,0.22);
-}
-
-/* Accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .stat .dot{ transition: none; }
 }
