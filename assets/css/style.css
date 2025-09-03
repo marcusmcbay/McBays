@@ -165,3 +165,37 @@ footer a:hover{color:var(--text)}
   100%{ background-position: 0% 50%; }
 }
 
+/* Full-page animated background */
+body.is-animated {
+  background: linear-gradient(120deg, #0a1b3f, #102a6b, #163d9b, #0a1b3f);
+  background-size: 300% 300%;
+  animation: page-shift 18s ease-in-out infinite;
+  color: #fff; /* make default text white */
+}
+
+/* Ensure sections inherit white text by default */
+body.is-animated h1,
+body.is-animated h2,
+body.is-animated h3,
+body.is-animated p,
+body.is-animated small,
+body.is-animated strong {
+  color: #fff;
+}
+
+/* Buttons look good on dark bg */
+body.is-animated .button.secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.55);
+}
+body.is-animated .button.secondary:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+@keyframes page-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
