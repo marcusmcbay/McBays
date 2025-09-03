@@ -42,7 +42,7 @@ nav a.active, nav a:hover{ color:var(--text) }
 .logo-img{ width:32px; height:32px; border-radius:8px; display:inline-block; vertical-align:middle; object-fit:contain; flex:0 0 32px }
 a.brand:active .logo-img, a.brand:focus .logo-img{ transform:none }
 
-/* Hero layout (no bg here — body drives the gradient when enabled) */
+/* Hero layout */
 .hero{
   display:grid; grid-template-columns:1.2fr 1fr; gap:32px; align-items:center;
   padding:72px 0 56px;
@@ -121,13 +121,26 @@ footer a:hover{ color:var(--text) }
 /* Full-page animated background */
 /* ============================= */
 body.is-animated{
-  background: linear-gradient(120deg, #0a1b3f, #102a6b, #163d9b, #0a1b3f);
-  background-size: 300% 300%;
-  animation: page-shift 18s ease-in-out infinite;
+  background: linear-gradient(-45deg, #0a1b3f, #004aad, #00c6ff, #7f00ff);
+  background-size: 400% 400%;
+  animation: page-shift 12s ease-in-out infinite;
   color: #fff; /* default text on dark bg */
 }
 
-/* Make text readable when on dark bg */
+/* Subtle tech grid overlay */
+body.is-animated::before{
+  content:"";
+  position: fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+body.is-animated > *{ position: relative; z-index: 1 }
+
+/* Make text readable */
 body.is-animated h1,
 body.is-animated h2,
 body.is-animated h3,
@@ -163,12 +176,11 @@ body.is-animated footer{
 body.is-animated footer a{ color: #d9e2f1 }
 body.is-animated footer a:hover{ color:#fff }
 
-/* Keep header bright/translucent above gradient (already defined) */
-/* header { background: rgba(255,255,255,.85); backdrop-filter: blur(10px); } */
-
 /* Animation keyframes */
 @keyframes page-shift{
   0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 100%; }
   50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 0%; }
   100% { background-position: 0% 50%; }
 }
