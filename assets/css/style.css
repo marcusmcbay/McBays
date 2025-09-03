@@ -161,3 +161,28 @@ footer a:hover{ color:#fff }
   * { animation: none !important; transition: none !important; }
   body { background-position: 0 0 !important; }
 }
+
+/* Hide status dots until interaction */
+.stat .dot{
+  opacity: 0;                 /* invisible but keeps layout space */
+  transform: scale(.85);      /* tiny shrink for a smoother pop */
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* Show on hover (mouse) and focus-within (keyboard/touch) */
+.stat:hover .dot,
+.stat:focus-within .dot{
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Optional: a tiny highlight on hover */
+.stat:hover{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .stat .dot{ transition: none; }
+}
