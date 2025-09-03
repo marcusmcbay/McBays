@@ -1,10 +1,11 @@
-/* ==== McBays – bright, clean, “big-tech” look (subtle) ==== */
+/* ==== McBays – bright, clean, “big-tech” look (subtle gradient drift) ==== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root{
-  --bg1: #0a1326;        /* dark gradient start */
-  --bg2: #0f2547;        /* mid blue */
+  --bg1: #0a1326;        /* very dark navy */
+  --bg2: #123b75;        /* brighter tech blue */
   --bg3: #0b3258;        /* teal-ish blue */
+  --bg4: #081b2f;        /* fallback dark */
   --card: #ffffff;
   --text: #0f2a4a;       /* used inside header only */
   --muted: #d7e4f3;      /* body copy on dark */
@@ -23,8 +24,8 @@ body{
   color: #fff;
 
   /* Subtle, premium gradient background */
-  background: linear-gradient(-30deg, var(--bg1), var(--bg2), var(--bg3), var(--bg1));
-  background-size: 250% 250%;
+  background: linear-gradient(-30deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4), var(--bg1));
+  background-size: 300% 300%;
   animation: bg-drift 20s ease-in-out infinite;
 }
 
