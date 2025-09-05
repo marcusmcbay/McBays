@@ -1,78 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Contact – McBays</title>
-  <meta name="description" content="Contact McBays for commercial IT & networking projects." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact – McBays</title>
+<meta name="description" content="Contact McBays for commercial IT & networking projects." />
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 <header>
-  <div class="container nav">
+<div class="container nav">
     <a class="brand" href="index.html">
-      <img class="logo-img" src="assets/img/mcbays-logo.png" alt="McBays logo" />
-      <span class="brand-name">McBays</span>
+        <img class="logo-img" src="assets/img/mcbays-logo.png" alt="McBays logo" />
+        <span class="brand-name">McBays</span>
     </a>
-    <nav>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a class="active" href="contact.html">Contact</a>
-    </nav>
-  </div>
+<nav>
+<a href="/services.html">Services</a>
+<a href="/about.html">About</a>
+<a class="active" href="/contact.html">Contact</a>
+</nav>
+</div>
 </header>
 
+
 <main class="container">
-  <section class="section">
-    <h2>Contact</h2>
-    <p class="lead">Tell us about your site. We’ll reply with next steps and a no-surprises estimate.</p>
-
-    <div class="card">
-      <!-- ✅ Formspree: replace your_form_id below -->
-      <form action="https://formspree.io/f/xwpnwwbj" method="POST">
-        <!-- Email subject in your inbox -->
-        <input type="hidden" name="_subject" value="New inquiry from mcbays.com" />
-        <!-- Nicer email layout -->
-        <input type="hidden" name="_template" value="table" />
-        <!-- Redirect to thank-you page after success -->
-        <input type="hidden" name="_next" value="thank-you.html" />
-        <!-- Spam honeypot (kept off-screen) -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
-               style="position:absolute;left:-9999px;height:0;width:0;" />
-
-        <label>
-          <span class="sr-only">Your name</span>
-          <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
-        </label>
-
-        <label>
-          <span class="sr-only">Email</span>
-          <input type="email" name="email" placeholder="Email" autocomplete="email" required />
-        </label>
-
-        <label>
-          <span class="sr-only">Company (optional)</span>
-          <input type="text" name="company" placeholder="Company (optional)" autocomplete="organization" />
-        </label>
-
-        <label>
-          <span class="sr-only">Message</span>
-          <textarea name="message" placeholder="Project details (location, scope, timeline)" required></textarea>
-        </label>
-
-        <button class="button primary" type="submit">Send</button>
-      </form>
-      <small style="display:block;margin-top:10px;color:var(--muted)">
-        We typically respond within one business day.
-      </small>
-    </div>
-  </section>
+<section class="section">
+<h2>Contact</h2>
+<p class="lead">Tell us about your site. We’ll reply with next steps and a no‑surprises estimate.</p>
+<div class="card">
+<form action="https://formspree.io/f/your-id" method="POST">
+<input type="text" name="name" placeholder="Your name" required />
+<input type="email" name="email" placeholder="Email" required />
+<input type="text" name="company" placeholder="Company (optional)" />
+<textarea name="message" placeholder="Project details (location, scope, timeline)" required></textarea>
+<button class="button primary" type="submit">Send</button>
+</form>
+<p style="color: var(--muted); margin-top: 10px;">No form service yet? Replace the form <code>action</code> with <code>mailto:you@yourdomain.com</code> to open the mail client, or create a free Formspree endpoint and paste it above.</p>
+</div>
+</section>
 </main>
 
+
 <footer>
-  <div class="container">
-    <small>© <span id="y"></span> McBays LLC · IT & Network Infrastructure · California</small>
-  </div>
+<div class="container">
+<small>© <span id="y"></span> McBays LLC · IT & Network Infrastructure · California</small>
+</div>
 </footer>
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
