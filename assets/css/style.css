@@ -36,7 +36,12 @@ body{
   100% { background-position: 0% 50%; }
 }
 
-.container{ max-width:1140px; margin:0 auto; padding:0 24px }
+/* Container with logical padding */
+.container{
+  max-width:1140px;
+  margin:0 auto;
+  padding-inline:24px;
+}
 
 /* Header / Nav: bright, translucent over dark bg */
 header{
@@ -183,6 +188,18 @@ footer a:hover{ color:#fff }
 @media (max-width:640px){
   .cards{ grid-template-columns:1fr }
   .hero h1{ font-size:36px }
+
+  /* Add safe-area and breathing room */
+  .container{
+    padding-left:  max(18px, calc(18px + env(safe-area-inset-left)));
+    padding-right: max(18px, calc(18px + env(safe-area-inset-right)));
+  }
+  .nav nav a{ margin-left:14px; }
+}
+
+/* If very narrow, let nav wrap neatly */
+@media (max-width:420px){
+  .nav{ flex-wrap: wrap; row-gap: 6px; }
 }
 
 /* Reduced motion preference */
