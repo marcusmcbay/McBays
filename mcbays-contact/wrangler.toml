@@ -1,0 +1,7 @@
+name = "mcbays-contact"
+main = "index.js"
+compatibility_date = "2025-09-18"
+
+[vars]
+# Lock CORS to your site (change to your actual domain, incl. https)
+ALLOWED_ORIGIN = "https://mcbays.com"
